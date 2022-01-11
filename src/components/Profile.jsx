@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useContext } from "react";
+import UserContext from "../context/user/UserContext";
 
 const Profile = () => {
-    return (
+  const { selectedUser } = useContext(UserContext);
+  return (
+    <div>
+      {selectedUser ? (
         <div>
-            <h1>Profile</h1>
+          El usuario seleccionado es <b>{selectedUser.first_name}</b>{" "}
+          <b>{selectedUser.last_name}</b>
         </div>
-    )
-}
+      ) : (
+        <h1>Selecciona un usuario</h1>
+      )}
+    </div>
+  );
+};
 
-export default Profile
+export default Profile;
